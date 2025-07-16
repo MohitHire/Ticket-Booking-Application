@@ -1,146 +1,16 @@
-/* src/pages/Payment.css */
-
-.payment-container {
-  min-height: 100vh;
-  background-color: #f8fafc;
-  padding-bottom: 2rem;
-}
-
-.payment-header {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem 2rem 1rem;
-}
-
-.payment-header h1 {
-  font-size: 2rem;
-  color: #0f172a;
-  margin-bottom: 1rem;
-}
-
-.breadcrumb {
-  color: #64748b;
-  font-size: 0.9rem;
-}
-
-.breadcrumb .active {
-  color: #f97316;
-  font-weight: 600;
-}
-
-.payment-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-}
-
-.booking-summary,
-.payment-methods {
-  background-color: white;
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.booking-summary h2,
-.payment-methods h2 {
-  font-size: 1.3rem;
-  color: #0f172a;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid #e2e8f0;
-}
-
-.summary-item {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
-}
-
-.summary-item span:first-child {
-  color: #64748b;
-}
-
-.summary-item span:last-child {
-  color: #0f172a;
-  font-weight: 500;
-  text-align: right;
-}
-
-.summary-total {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1.5rem;
-  padding-top: 1rem;
-  border-top: 1px solid #e2e8f0;
-  font-weight: 600;
-  font-size: 1.1rem;
-}
-
-.payment-option {
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.payment-option input {
-  accent-color: #f97316;
-}
-
-.payment-option label {
-  cursor: pointer;
-}
-
-.pay-button {
-  width: 100%;
-  background: linear-gradient(90deg, #f43f5e, #f97316);
-  color: white;
-  border: none;
-  padding: 1rem;
-  border-radius: 6px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 1rem;
-  margin-top: 1.5rem;
-}
-
-.pay-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.error-container {
-  text-align: center;
+.payment {
+  max-width: 500px;
+  margin: auto;
   padding: 2rem;
-  max-width: 600px;
-  margin: 2rem auto;
-  background: #fff5f5;
-  border-radius: 8px;
-  border: 1px solid #fed7d7;
+  text-align: center;
 }
 
-.error-container h2 {
-  color: #e53e3e;
-  margin-bottom: 1.5rem;
-}
-
-.error-container button {
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  background: #4299e1;
+.payment-options button {
+  margin: 1rem;
+  padding: 0.8rem 1.5rem;
+  background-color: #f97316;
   color: white;
   border: none;
-}
-
-@media (max-width: 768px) {
-  .payment-content {
-    grid-template-columns: 1fr;
-  }
+  border-radius: 5px;
+  cursor: pointer;
 }
