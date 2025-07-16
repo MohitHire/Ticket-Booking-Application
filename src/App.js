@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
 // Pages
 import Home from "./pages/Home";
@@ -18,7 +18,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/movie/:id" element={<MovieDetails />} />
 
-        {/* Booking Flow - Protected */}
+        {/* Booking Flow */}
         <Route path="/book/:id" element={<TicketBooking />} />
         <Route path="/seats/:id" element={<SeatBooking />} />
         <Route path="/payment/:id" element={<Payment />} />
