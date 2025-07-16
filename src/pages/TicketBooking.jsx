@@ -11,13 +11,24 @@ export default function TicketBooking() {
   const [selectedTime, setSelectedTime] = useState("");
 
   const handleProceed = () => {
-    if (selectedTheater && selectedTime) {
-      navigate(`/seats/${id}`, {
-        state: { theaterId: selectedTheater, time: selectedTime, date: selectedDate },
-      });
-    } else {
-      alert("Please select a theater and time");
+    if (!selectedTheater || !selectedTime || !selectedDate) {
+      alert("Please select theater, date and showtime");
+      return;
     }
+
+    console.log("Navigating with:", {
+      theaterId: selectedTheater,
+      time: selectedTime,
+      date: selectedDate
+    });
+
+    navigate(`/seats/${id}`, {
+      state: {
+        theaterId: selectedTheater,
+        time: selectedTime,
+        date: selectedDate,
+      },
+    });
   };
 
   return (

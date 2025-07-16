@@ -99,9 +99,9 @@ export default function Navbar({ city, setCity, setRegion }) {
         
         <div className="navbar-actions">
           <button className="btn-login" onClick={() => nav("/login")}>
-            Sign In
+            Login
           </button>
-          <button className="btn-signup">
+          <button className="btn-signup" onClick={() => nav("/SignIn")}>
             Sign Up
           </button>
         </div>

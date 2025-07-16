@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import theaters from "../data/theaters";
 import "./SeatBooking.css";
@@ -8,16 +8,37 @@ export default function SeatBooking() {
   const { state } = useLocation();
   const navigate = useNavigate();
 
-  const show = theaters
-    .find((t) => t.id === state.theaterId)
-    .shows.find((s) => s.time === state.time && s.date === state.date);
-
   const [selectedSeats, setSelectedSeats] = useState([]);
+  const [theater, setTheater] = useState(null);
+  const [show, setShow] = useState(null);
+
+  useEffect(() => {
+    if (!state) return;
+    const foundTheater = theaters.find((t) => t.id === state.theaterId);
+    const foundShow = foundTheater?.shows?.find(
+      (s) => s.time === state.time && s.date === state.date
+    );
+    setTheater(foundTheater);
+    setShow(foundShow);
+  }, [state]);
+
+  if (!state || !theater || !show) {
+    return (
+      <div style={{ padding: "2rem", textAlign: "center" }}>
+        <h2>Error: Show or theater not found</h2>
+        <p>Please go back and select show details again.</p>
+      </div>
+    );
+  }
 
   const toggleSeat = (seatId) => {
-    if (show.seats.find((s) => s.id === seatId).status === "booked") return;
+    const seatStatus = show.seats.find((s) => s.id === seatId).status;
+    if (seatStatus === "booked" || seatStatus === "reserved") return;
+
     setSelectedSeats((prev) =>
-      prev.includes(seatId) ? prev.filter((s) => s !== seatId) : [...prev, seatId]
+      prev.includes(seatId)
+        ? prev.filter((s) => s !== seatId)
+        : [...prev, seatId]
     );
   };
 
@@ -32,7 +53,10 @@ export default function SeatBooking() {
 
   return (
     <div className="seat-booking">
-      <h2>Select Your Seats</h2>
+      <h2>
+        {theater.name} — {state.date} @ {state.time}
+      </h2>
+
       <div className="seat-grid">
         {show.seats.map((seat) => (
           <div
@@ -46,6 +70,7 @@ export default function SeatBooking() {
           </div>
         ))}
       </div>
+
       <div className="summary">
         <p>Selected Seats: {selectedSeats.join(", ") || "None"}</p>
         <p>Total: ₹{selectedSeats.length * 200}</p>
